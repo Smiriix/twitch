@@ -89,6 +89,12 @@ body {
     grid-template-columns: repeat(5, 1fr);
     gap: 24px;
 }
+.gameList__error {
+    grid-column: 1 / -1;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+}
 .gameList__item {
     display: block;
     background: #111;
