@@ -16,18 +16,25 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(result => result.json())
         .then(data => {
             listItems = document.querySelector(".gameList__wrapper");
-            data.filter(k => k.name.toLocaleLowerCase().search(queryString.toLocaleLowerCase()) > -1).forEach(item => {
-                let itemCard = document.createElement("div");
-                itemCard.className = 'gameList__item';
-                itemCard.innerHTML = `
+            let arrList = data.filter(k => k.name.toLocaleLowerCase().search(queryString.toLocaleLowerCase()) > -1);
+            let errorDiv = document.createElement("div");
+            errorDiv.className = 'gameList__error';
+            errorDiv.innerHTML = `Игр найдено ${arrList.length}`;
+
+            if (arrList) {
+                arrList.forEach(item => {
+                    let itemCard = document.createElement("div");
+                    itemCard.className = 'gameList__item';
+                    itemCard.innerHTML = `
 <img src="${item.thumb ? './thumbs/' + item.thumb : './assets/placeholder.jpg'}" width="200" height="300" alt="${item.name}">
 <div class="gameList__item_data">
     <p>${item.name}</p>
     <span>Оценка: <b>${item.rate}</b></span>
-    <a href="${item.link}">Смотреть</a>
+    <a href="${item.link}" target="_blank">Смотреть</a>
 </div>`;
-                listItems.appendChild(itemCard);
-                itemObserv.observe(itemCard);
-            });
+                    listItems.appendChild(itemCard);
+                    itemObserv.observe(itemCard);
+                });
+            }
         });
 });
