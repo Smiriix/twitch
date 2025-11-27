@@ -20,7 +20,7 @@ body {
     background-image: url("../assets/background.jpg");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 110vw;
+    background-size: cover;
     background-attachment: fixed;
     background-blend-mode: multiply;
 }
@@ -134,4 +134,25 @@ body {
 }
 .gameList__item_data a:hover {
     opacity: 0.6;
+}
+
+@media (max-width: 1360px){
+    .gameList__wrapper {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+@media (max-width: 1200px){
+    .gameList__wrapper {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (max-width: 990px){
+    .gameList__wrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 520px){
+    .gameList__wrapper {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
