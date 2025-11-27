@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     const itemObserv = new IntersectionObserver(observFun);
     document.querySelector(".gameList__search input").value = `${queryString}`;
-    fetch("games.json")
+    fetch("./games.json")
         .then(result => result.json())
         .then(data => {
             listItems = document.querySelector(".gameList__wrapper");
