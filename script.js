@@ -20,7 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
             let errorDiv = document.createElement("div");
             errorDiv.className = 'gameList__error';
             errorDiv.innerHTML = `Игр найдено ${arrList.length}`;
-
+            listItems.appendChild(errorDiv);
+            
             if (arrList) {
                 arrList.forEach(item => {
                     let itemCard = document.createElement("div");
