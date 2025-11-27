@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,58 +7,23 @@
     <link rel="stylesheet" href="./css/font.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
-
 <body>
-    <main>
-        <section>
-            <div class="container">
-                <h1>Список пройденных игр</h1>
-                <table cellspacing="5">
-                    <thead>
-                        <tr>
-                            <th>Название игры</th>
-                            <th>Дата прохождения</th>
-                            <th>Личная оценка</th>
-                            <th>Ссылка на прохождение</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
+    <header class="header">
+        <div class="container">
+            <div class="header__wrapper">
+                <a href="/" class="header__logo">Smiriix</a>
             </div>
-        </section>
-    </main>
-    <script>
-        scrollFun = (e) => {
-            e.forEach(item => {
-                if (item.isIntersecting) {
-                    item.target.classList.add("show");
-                } else {
-                    item.target.classList.remove("show");
-                }
-            })
-        }
-        let obeserverMutation = new IntersectionObserver(scrollFun);
-        fetch("games.json")
-            .then(result => result.json())
-            .then(data => {
-                let table = document.querySelector("tbody");
-                if (data) {
-                    data.forEach(li => {
-                        let item = document.createElement("tr");
-
-                        item.innerHTML = `<td>${li.name}</td><td>${li.date}</td><td><div class="stars" style="--rate: ${li.rate / 5 * 100}%; --countPadd: ${Math.floor(li.rate)}"></div></td><td><a href="${li.link}" target="_blank">Смотреть</a></td>`;
-                        table.appendChild(item);
-                        obeserverMutation.observe(item);
-                    });
-                    if (!data.length) {
-                        let item = document.createElement("tr");
-                        item.innerHTML = `<td colspan='4' style='text-align: center;'>Игр ещё нету</td>`;
-                        table.appendChild(item);
-                        obeserverMutation.observe(item);
-                    }
-                }
-            });
-    </script>
+        </div>
+    </header>
+    <section class="gameList">
+        <div class="container">
+            <form class="gameList__search" method="GET">
+                <input type="text" name="q" minlength="3" placeholder="Введите название игры...">
+                <button type="submit"></button>
+            </form>
+            <div class="gameList__wrapper"></div>
+        </div>
+    </section>
+    <script src="./js/script.js"></script>
 </body>
-
 </html>
