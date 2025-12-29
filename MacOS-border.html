@@ -20,6 +20,7 @@
             --btn_size: 16px;
             --size: 15px;
             --title: '';
+            --borderColor: #111;
         }
 
         body,
@@ -39,9 +40,9 @@
         .border {
             position: relative;
             height: 100vh;
-            border-left: 2px solid #111;
-            border-right: 2px solid #111;
-            border-bottom: 2px solid #111;
+            border-left: 2px solid var(--borderColor);
+            border-right: 2px solid var(--borderColor);
+            border-bottom: 2px solid var(--borderColor);
             box-sizing: border-box;
         }
 
@@ -51,7 +52,7 @@
             align-items: center;
             justify-content: space-between;
             height: var(--border_height);
-            background: #111;
+            background: var(--borderColor);
             left: -2px;
             right: -2px;
             top: 0;
@@ -107,7 +108,7 @@
             position: absolute;
             width: var(--size);
             aspect-ratio: 1 / 1;
-            background: #111;
+            background: var(--borderColor);
             mask-composite: exclude !important;
         }
 
